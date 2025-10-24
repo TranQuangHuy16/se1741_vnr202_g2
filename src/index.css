@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Be Vietnam Pro', 'Roboto', sans-serif;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 1s ease-in;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .animate-typing {
+    animation: typing 3s steps(40, end);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  .highlight-yellow {
+    background: linear-gradient(180deg, transparent 60%, #f1c40f 60%);
+    padding: 0 4px;
+  }
+
+  .highlight-red {
+    background: linear-gradient(180deg, transparent 60%, #e74c3c 60%);
+    padding: 0 4px;
+  }
+
+  .glow-hover:hover {
+    box-shadow: 0 0 20px rgba(241, 196, 15, 0.6);
+    transform: translateY(-2px);
+  }
+}
