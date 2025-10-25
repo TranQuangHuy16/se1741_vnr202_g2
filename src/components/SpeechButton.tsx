@@ -32,7 +32,7 @@ export function SpeechButton({ text, className = "" }: SpeechButtonProps) {
       const res = await fetch("https://api.fpt.ai/hmi/tts/v5", {
         method: "POST",
         headers: {
-          "api-key": "fQSUt5jG6KLQzQz91gcCiLrJttMiPIDm", // 🔑 API key
+          "api-key": import.meta.env.VITE_API_KEY, // 🔑 API key
           speed: "1.0",
           voice: "banmai", // có thể đổi: banmai, myan, lannhi, leminh, minhquang...
         },

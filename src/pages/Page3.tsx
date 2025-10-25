@@ -83,9 +83,9 @@ export function Page3({ onNext, onPrev }: Page3Props) {
           <p className="text-xl text-gray-600 mb-2">
             Chiến tranh đặc biệt (1961-1965)
           </p>
-          <p className="text-lg text-gray-500">
+          {/* <p className="text-lg text-gray-500">
             CQ6.3: Vận dụng sáng tạo đường lối trong thực tiễn
-          </p>
+          </p> */}
         </div>
 
         <div className="mb-8 flex justify-center animate-slide-up">

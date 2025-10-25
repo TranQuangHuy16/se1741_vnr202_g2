@@ -1,5 +1,5 @@
-import { MapPin, Target, Flag } from 'lucide-react';
-import { SpeechButton } from '../components/SpeechButton';
+import { MapPin, Target, Flag } from "lucide-react";
+import { SpeechButton } from "../components/SpeechButton";
 
 interface Page2Props {
   onNext: () => void;
@@ -24,7 +24,7 @@ export function Page2({ onNext, onPrev }: Page2Props) {
           <h1 className="text-4xl md:text-5xl font-bold text-[#0a3d62] mb-4">
             Đường lối Đại hội III (1960)
           </h1>
-          <p className="text-xl text-gray-600">CQ6.1: Phân tích nội dung cốt lõi</p>
+          {/* <p className="text-xl text-gray-600">CQ6.1: Phân tích nội dung cốt lõi</p> */}
         </div>
 
         <div className="mb-8 flex justify-center animate-slide-up">
@@ -34,22 +34,29 @@ export function Page2({ onNext, onPrev }: Page2Props) {
         <div className="space-y-8 animate-slide-up">
           <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-2xl p-8 shadow-lg border-l-8 border-yellow-500">
             <div className="flex items-start gap-4">
-              <MapPin className="text-yellow-700 flex-shrink-0 mt-1" size={32} />
+              <MapPin
+                className="text-yellow-700 flex-shrink-0 mt-1"
+                size={32}
+              />
               <div>
                 <h2 className="text-2xl font-bold text-[#0a3d62] mb-4">
                   1. Bối cảnh lịch sử (1954-1960)
                 </h2>
                 <p className="text-lg text-gray-700 leading-relaxed mb-3">
-                  Sau <span className="highlight-yellow font-semibold">Hiệp định Genève (1954)</span>,
-                  đất nước tạm thời bị chia cắt làm hai miền theo vĩ tuyến 17.
+                  Sau{" "}
+                  <span className="highlight-yellow font-semibold">
+                    Hiệp định Genève (1954)
+                  </span>
+                  , đất nước tạm thời bị chia cắt làm hai miền theo vĩ tuyến 17.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed mb-3">
-                  <span className="font-semibold">Miền Bắc:</span> Được hoàn toàn giải phóng,
-                  bước vào thời kỳ quá độ lên chủ nghĩa xã hội.
+                  <span className="font-semibold">Miền Bắc:</span> Được hoàn
+                  toàn giải phóng, bước vào thời kỳ quá độ lên chủ nghĩa xã hội.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  <span className="font-semibold">Miền Nam:</span> Vẫn nằm dưới ách thống trị
-                  của đế quốc Mỹ và chính quyền Ngô Đình Diệm, nhân dân chịu áp bức nặng nề.
+                  <span className="font-semibold">Miền Nam:</span> Vẫn nằm dưới
+                  ách thống trị của đế quốc Mỹ và chính quyền Ngô Đình Diệm,
+                  nhân dân chịu áp bức nặng nề.
                 </p>
               </div>
             </div>
@@ -69,12 +76,17 @@ export function Page2({ onNext, onPrev }: Page2Props) {
                   <div className="bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold">
                     1
                   </div>
-                  <h3 className="text-xl font-bold text-red-800">Nhiệm vụ miền Bắc</h3>
+                  <h3 className="text-xl font-bold text-red-800">
+                    Nhiệm vụ miền Bắc
+                  </h3>
                 </div>
                 <p className="text-lg text-gray-800 leading-relaxed">
-                  <span className="highlight-red font-semibold">Tiến hành cách mạng xã hội chủ nghĩa</span>,
-                  xây dựng miền Bắc thành <span className="font-semibold">căn cứ địa vững chắc</span> cho
-                  cách mạng cả nước
+                  <span className="highlight-red font-semibold">
+                    Tiến hành cách mạng xã hội chủ nghĩa
+                  </span>
+                  , xây dựng miền Bắc thành{" "}
+                  <span className="font-semibold">căn cứ địa vững chắc</span>{" "}
+                  cho cách mạng cả nước
                 </p>
               </div>
 
@@ -83,12 +95,18 @@ export function Page2({ onNext, onPrev }: Page2Props) {
                   <div className="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold">
                     2
                   </div>
-                  <h3 className="text-xl font-bold text-blue-800">Nhiệm vụ miền Nam</h3>
+                  <h3 className="text-xl font-bold text-blue-800">
+                    Nhiệm vụ miền Nam
+                  </h3>
                 </div>
                 <p className="text-lg text-gray-800 leading-relaxed">
-                  <span className="highlight-yellow font-semibold">Giải phóng miền Nam</span>,
-                  thống nhất đất nước, hoàn thành <span className="font-semibold">độc lập dân tộc
-                  và thống nhất đất nước</span>
+                  <span className="highlight-yellow font-semibold">
+                    Giải phóng miền Nam
+                  </span>
+                  , thống nhất đất nước, hoàn thành{" "}
+                  <span className="font-semibold">
+                    độc lập dân tộc và thống nhất đất nước
+                  </span>
                 </p>
               </div>
             </div>
@@ -104,11 +122,17 @@ export function Page2({ onNext, onPrev }: Page2Props) {
 
             <div className="space-y-4">
               <div className="bg-white rounded-xl p-6 shadow-md">
-                <h3 className="text-xl font-bold text-red-700 mb-3">Miền Bắc</h3>
+                <h3 className="text-xl font-bold text-red-700 mb-3">
+                  Miền Bắc
+                </h3>
                 <ul className="space-y-2 text-lg text-gray-700">
                   <li className="flex items-start gap-2">
                     <span className="text-red-600 font-bold mt-1">•</span>
-                    <span><span className="highlight-red font-semibold">Trung tâm cách mạng xã hội chủ nghĩa</span></span>
+                    <span>
+                      <span className="highlight-red font-semibold">
+                        Trung tâm cách mạng xã hội chủ nghĩa
+                      </span>
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-red-600 font-bold mt-1">•</span>
@@ -116,17 +140,25 @@ export function Page2({ onNext, onPrev }: Page2Props) {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-red-600 font-bold mt-1">•</span>
-                    <span>Căn cứ địa vững chắc về kinh tế, chính trị, quân sự</span>
+                    <span>
+                      Căn cứ địa vững chắc về kinh tế, chính trị, quân sự
+                    </span>
                   </li>
                 </ul>
               </div>
 
               <div className="bg-white rounded-xl p-6 shadow-md">
-                <h3 className="text-xl font-bold text-blue-700 mb-3">Miền Nam</h3>
+                <h3 className="text-xl font-bold text-blue-700 mb-3">
+                  Miền Nam
+                </h3>
                 <ul className="space-y-2 text-lg text-gray-700">
                   <li className="flex items-start gap-2">
                     <span className="text-blue-600 font-bold mt-1">•</span>
-                    <span><span className="highlight-yellow font-semibold">Tiền tuyến cách mạng dân tộc dân chủ nhân dân</span></span>
+                    <span>
+                      <span className="highlight-yellow font-semibold">
+                        Tiền tuyến cách mạng dân tộc dân chủ nhân dân
+                      </span>
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-blue-600 font-bold mt-1">•</span>

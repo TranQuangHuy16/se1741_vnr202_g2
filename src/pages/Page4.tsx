@@ -1,6 +1,6 @@
-import { Trophy, Calendar } from 'lucide-react';
-import { useState } from 'react';
-import { SpeechButton } from '../components/SpeechButton';
+import { Trophy, Calendar } from "lucide-react";
+import { useState } from "react";
+import { SpeechButton } from "../components/SpeechButton";
 
 interface Page4Props {
   onNext: () => void;
@@ -15,39 +15,46 @@ interface TimelineEvent {
 }
 
 export function Page4({ onNext, onPrev }: Page4Props) {
-  const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(
+    null
+  );
 
   const timelineEvents: TimelineEvent[] = [
     {
-      year: '1965',
-      title: 'Mỹ leo thang chiến tranh',
-      description: 'Mỹ đưa quân viễn chinh trực tiếp vào miền Nam',
-      detail: 'Tháng 3/1965, Mỹ đưa quân viễn chinh đầu tiên đổ bộ lên Đà Nẵng, đánh dấu bước leo thang nguy hiểm của chiến tranh. Mỹ chuyển sang chiến lược "chiến tranh cục bộ", dùng trực tiếp quân đội Mỹ để đánh chiếm và giữ đất, đồng thời ném bom miền Bắc ác liệt. Miền Bắc vừa chiến đấu vừa sản xuất, kiên cường chống Mỹ cứu nước. Miền Nam mở các chiến dịch lớn, tiêu diệt sinh lực địch, làm thất bại chiến lược "chiến tranh cục bộ" của Mỹ.'
+      year: "1965",
+      title: "Mỹ leo thang chiến tranh",
+      description: "Mỹ đưa quân viễn chinh trực tiếp vào miền Nam",
+      detail:
+        'Tháng 3/1965, Mỹ đưa quân viễn chinh đầu tiên đổ bộ lên Đà Nẵng, đánh dấu bước leo thang nguy hiểm của chiến tranh. Mỹ chuyển sang chiến lược "chiến tranh cục bộ", dùng trực tiếp quân đội Mỹ để đánh chiếm và giữ đất, đồng thời ném bom miền Bắc ác liệt. Miền Bắc vừa chiến đấu vừa sản xuất, kiên cường chống Mỹ cứu nước. Miền Nam mở các chiến dịch lớn, tiêu diệt sinh lực địch, làm thất bại chiến lược "chiến tranh cục bộ" của Mỹ.',
     },
     {
-      year: '1968',
-      title: 'Tổng tiến công Mậu Thân',
-      description: 'Cuộc tổng tiến công và nổi dậy Tết Mậu Thân',
-      detail: 'Tết Mậu Thân 1968, quân và dân ta đồng loạt tiến công vào các thành phố lớn, trong đó có Sài Gòn. Mặc dù chưa giành được thắng lợi quân sự hoàn toàn, nhưng Tổng tiến công Mậu Thân là bước ngoặt về chính trị và quân sự. Nó làm lung lay ý chí xâm lược của Mỹ, buộc Mỹ phải chuyển sang chiến lược "Việt Nam hóa chiến tranh", đồng thời mở Hội nghị Paris để tìm lối thoát. Đây là thắng lợi to lớn về chiến lược của cách mạng Việt Nam.'
+      year: "1968",
+      title: "Tổng tiến công Mậu Thân",
+      description: "Cuộc tổng tiến công và nổi dậy Tết Mậu Thân",
+      detail:
+        'Tết Mậu Thân 1968, quân và dân ta đồng loạt tiến công vào các thành phố lớn, trong đó có Sài Gòn. Mặc dù chưa giành được thắng lợi quân sự hoàn toàn, nhưng Tổng tiến công Mậu Thân là bước ngoặt về chính trị và quân sự. Nó làm lung lay ý chí xâm lược của Mỹ, buộc Mỹ phải chuyển sang chiến lược "Việt Nam hóa chiến tranh", đồng thời mở Hội nghị Paris để tìm lối thoát. Đây là thắng lợi to lớn về chiến lược của cách mạng Việt Nam.',
     },
     {
-      year: '1969-1972',
-      title: 'Việt Nam hóa chiến tranh',
-      description: 'Mỹ rút dần quân, dùng nguỵ quân chiến đấu',
-      detail: 'Giai đoạn này Mỹ thực hiện chiến lược "Việt Nam hóa chiến tranh", rút dần quân Mỹ về nước nhưng tăng cường vũ khí và viện trợ cho chính quyền Sài Gòn. Quân và dân ta tiếp tục chiến đấu kiên cường, giành nhiều thắng lợi trên các mặt trận. Miền Bắc vẫn vững vàng chi viện cho miền Nam. Đường Trường Sơn ngày càng được mở rộng và hiện đại hóa, vận chuyển hàng vạn tấn vũ khí, lương thực vào chiến trường.'
+      year: "1969-1972",
+      title: "Việt Nam hóa chiến tranh",
+      description: "Mỹ rút dần quân, dùng nguỵ quân chiến đấu",
+      detail:
+        'Giai đoạn này Mỹ thực hiện chiến lược "Việt Nam hóa chiến tranh", rút dần quân Mỹ về nước nhưng tăng cường vũ khí và viện trợ cho chính quyền Sài Gòn. Quân và dân ta tiếp tục chiến đấu kiên cường, giành nhiều thắng lợi trên các mặt trận. Miền Bắc vẫn vững vàng chi viện cho miền Nam. Đường Trường Sơn ngày càng được mở rộng và hiện đại hóa, vận chuyển hàng vạn tấn vũ khí, lương thực vào chiến trường.',
     },
     {
-      year: '1973',
-      title: 'Hiệp định Paris',
-      description: 'Mỹ ký Hiệp định Paris, cam kết rút quân',
-      detail: 'Ngày 27/1/1973, Hiệp định Paris về chấm dứt chiến tranh, lập lại hòa bình ở Việt Nam được ký kết. Đây là thắng lợi vĩ đại của nhân dân ta, buộc Mỹ phải công nhận các quyền dân tộc cơ bản của nhân dân Việt Nam, rút hết quân và cố vấn quân sự Mỹ khỏi miền Nam. Tuy nhiên, chính quyền Sài Gòn vẫn còn tồn tại, nên cuộc đấu tranh vẫn tiếp tục để hoàn thành sự nghiệp giải phóng và thống nhất đất nước.'
+      year: "1973",
+      title: "Hiệp định Paris",
+      description: "Mỹ ký Hiệp định Paris, cam kết rút quân",
+      detail:
+        "Ngày 27/1/1973, Hiệp định Paris về chấm dứt chiến tranh, lập lại hòa bình ở Việt Nam được ký kết. Đây là thắng lợi vĩ đại của nhân dân ta, buộc Mỹ phải công nhận các quyền dân tộc cơ bản của nhân dân Việt Nam, rút hết quân và cố vấn quân sự Mỹ khỏi miền Nam. Tuy nhiên, chính quyền Sài Gòn vẫn còn tồn tại, nên cuộc đấu tranh vẫn tiếp tục để hoàn thành sự nghiệp giải phóng và thống nhất đất nước.",
     },
     {
-      year: '1975',
-      title: 'Chiến dịch Hồ Chí Minh',
-      description: 'Giải phóng hoàn toàn miền Nam, thống nhất đất nước',
-      detail: 'Cuối năm 1974 và đầu năm 1975, thế và lực của ta càng mạnh mẽ. Ngày 26/3/1975, Huế được giải phóng, mở đầu cho Tổng tiến công chiến lược. Chiến dịch Hồ Chí Minh được phát động từ ngày 26/4 đến 30/4/1975, giải phóng hoàn toàn Sài Gòn và toàn bộ miền Nam. Đất nước thống nhất, kết thúc hơn 20 năm chia cắt, hoàn thành sự nghiệp giải phóng dân tộc và thống nhất Tổ quốc. Đây là chiến thắng vĩ đại của toàn dân tộc Việt Nam, khẳng định đường lối đúng đắn của Đảng.'
-    }
+      year: "1975",
+      title: "Chiến dịch Hồ Chí Minh",
+      description: "Giải phóng hoàn toàn miền Nam, thống nhất đất nước",
+      detail:
+        "Cuối năm 1974 và đầu năm 1975, thế và lực của ta càng mạnh mẽ. Ngày 26/3/1975, Huế được giải phóng, mở đầu cho Tổng tiến công chiến lược. Chiến dịch Hồ Chí Minh được phát động từ ngày 26/4 đến 30/4/1975, giải phóng hoàn toàn Sài Gòn và toàn bộ miền Nam. Đất nước thống nhất, kết thúc hơn 20 năm chia cắt, hoàn thành sự nghiệp giải phóng dân tộc và thống nhất Tổ quốc. Đây là chiến thắng vĩ đại của toàn dân tộc Việt Nam, khẳng định đường lối đúng đắn của Đảng.",
+    },
   ];
 
   const pageContent = `
@@ -68,7 +75,7 @@ export function Page4({ onNext, onPrev }: Page4Props) {
             Từ sáng tạo đến thắng lợi
           </h1>
           <p className="text-xl text-gray-600 mb-2">Giai đoạn 1965-1975</p>
-          <p className="text-lg text-gray-500">Kết nối logic: CQ6.1 → CQ6.3 → CQ6.5</p>
+          {/* <p className="text-lg text-gray-500">Kết nối logic: CQ6.1 → CQ6.3 → CQ6.5</p> */}
         </div>
 
         <div className="mb-8 flex justify-center animate-slide-up">
@@ -78,7 +85,9 @@ export function Page4({ onNext, onPrev }: Page4Props) {
         <div className="bg-white rounded-2xl p-8 shadow-xl mb-8 animate-slide-up">
           <div className="flex items-center gap-3 mb-6">
             <Trophy className="text-yellow-600" size={36} />
-            <h2 className="text-2xl font-bold text-[#0a3d62]">Hành trình thắng lợi</h2>
+            <h2 className="text-2xl font-bold text-[#0a3d62]">
+              Hành trình thắng lợi
+            </h2>
           </div>
 
           <div className="relative">
@@ -86,13 +95,12 @@ export function Page4({ onNext, onPrev }: Page4Props) {
 
             <div className="space-y-8">
               {timelineEvents.map((event, index) => (
-                <div
-                  key={index}
-                  className="relative pl-20 group"
-                >
+                <div key={index} className="relative pl-20 group">
                   <div className="absolute left-0 top-0">
                     <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full shadow-lg group-hover:shadow-2xl transition-all duration-300 group-hover:scale-110">
-                      <span className="text-white font-bold text-sm">{event.year}</span>
+                      <span className="text-white font-bold text-sm">
+                        {event.year}
+                      </span>
                     </div>
                   </div>
 
@@ -100,11 +108,15 @@ export function Page4({ onNext, onPrev }: Page4Props) {
                     onClick={() => setSelectedEvent(event)}
                     className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer glow-hover border-l-4 border-yellow-500"
                   >
-                    <h3 className="text-xl font-bold text-[#0a3d62] mb-2">{event.title}</h3>
+                    <h3 className="text-xl font-bold text-[#0a3d62] mb-2">
+                      {event.title}
+                    </h3>
                     <p className="text-gray-700 mb-2">{event.description}</p>
                     <div className="flex items-center gap-2 text-blue-600 text-sm font-medium">
                       <Calendar size={16} />
-                      <span>Nhấn để xem thuyết trình chi tiết (200-300 từ)</span>
+                      <span>
+                        Nhấn để xem thuyết trình chi tiết (200-300 từ)
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -124,11 +136,13 @@ export function Page4({ onNext, onPrev }: Page4Props) {
                 <div className="inline-block bg-red-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mb-2">
                   1
                 </div>
-                <h3 className="font-bold text-red-700">CQ6.1</h3>
+                {/* <h3 className="font-bold text-red-700">CQ6.1</h3> */}
               </div>
               <p className="text-gray-700 text-center">
-                <span className="highlight-red font-semibold">Đường lối đúng đắn</span> từ Đại hội III
-                xác định hai nhiệm vụ chiến lược
+                <span className="highlight-red font-semibold">
+                  Đường lối đúng đắn
+                </span>{" "}
+                từ Đại hội III xác định hai nhiệm vụ chiến lược
               </p>
             </div>
 
@@ -137,11 +151,13 @@ export function Page4({ onNext, onPrev }: Page4Props) {
                 <div className="inline-block bg-yellow-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mb-2">
                   2
                 </div>
-                <h3 className="font-bold text-yellow-700">CQ6.3</h3>
+                {/* <h3 className="font-bold text-yellow-700">CQ6.3</h3> */}
               </div>
               <p className="text-gray-700 text-center">
-                <span className="highlight-yellow font-semibold">Vận dụng sáng tạo</span> trong thực tiễn,
-                hai miền phối hợp chặt chẽ
+                <span className="highlight-yellow font-semibold">
+                  Vận dụng sáng tạo
+                </span>{" "}
+                trong thực tiễn, hai miền phối hợp chặt chẽ
               </p>
             </div>
 
@@ -150,11 +166,11 @@ export function Page4({ onNext, onPrev }: Page4Props) {
                 <div className="inline-block bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mb-2">
                   3
                 </div>
-                <h3 className="font-bold text-blue-700">CQ6.5</h3>
+                {/* <h3 className="font-bold text-blue-700">CQ6.5</h3> */}
               </div>
               <p className="text-gray-700 text-center">
-                Dẫn đến <span className="font-semibold">thắng lợi vĩ đại</span> năm 1975,
-                thống nhất đất nước
+                Dẫn đến <span className="font-semibold">thắng lợi vĩ đại</span>{" "}
+                năm 1975, thống nhất đất nước
               </p>
             </div>
           </div>
@@ -165,10 +181,17 @@ export function Page4({ onNext, onPrev }: Page4Props) {
             <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
               <div className="sticky top-0 bg-gradient-to-r from-yellow-400 to-red-400 p-6 rounded-t-2xl">
                 <div className="flex items-start gap-3 mb-2">
-                  <Calendar className="text-white flex-shrink-0 mt-1" size={28} />
+                  <Calendar
+                    className="text-white flex-shrink-0 mt-1"
+                    size={28}
+                  />
                   <div className="flex-1">
-                    <h2 className="text-2xl font-bold text-white mb-1">{selectedEvent.title}</h2>
-                    <p className="text-white font-semibold">{selectedEvent.year}</p>
+                    <h2 className="text-2xl font-bold text-white mb-1">
+                      {selectedEvent.title}
+                    </h2>
+                    <p className="text-white font-semibold">
+                      {selectedEvent.year}
+                    </p>
                   </div>
                   <button
                     onClick={() => setSelectedEvent(null)}

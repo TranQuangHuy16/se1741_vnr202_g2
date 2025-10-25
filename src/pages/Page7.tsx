@@ -171,14 +171,19 @@ export function Page7({ onPrev }: Page7Props) {
           <div className="bg-gradient-to-r from-blue-600/30 to-purple-600/30 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-white/20 animate-slide-up">
             <div className="flex items-center gap-4 mb-4">
               <Users className="text-white" size={32} />
-              <h2 className="text-2xl font-bold text-white">Nhóm thực hiện</h2>
+              <h2 className="text-2xl font-bold text-white">
+                Nhóm thực hiện{" "}
+                <p className="text-white text-lg">
+                  <span className="font-semibold text-yellow-300">Nhóm 2</span>
+                </p>
+              </h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-white/10 rounded-xl p-4">
                 <p className="text-white text-lg">
                   Lớp:{" "}
-                  <span className="font-semibold text-yellow-300">Nhóm 2</span>
+                  <span className="font-semibold text-yellow-300">SE1741</span>
                 </p>
               </div>
               <div className="bg-white/10 rounded-xl p-4">
