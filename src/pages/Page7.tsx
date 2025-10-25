@@ -174,7 +174,7 @@ export function Page7({ onPrev }: Page7Props) {
               <h2 className="text-2xl font-bold text-white">
                 Nhóm thực hiện{" "}
                 <p className="text-white text-lg">
-                  <span className="font-semibold text-yellow-300">Nhóm 2</span>
+                  <span className="font-semibold text-yellow-300">Nhóm 4</span>
                 </p>
               </h2>
             </div>
