@@ -44,7 +44,7 @@ export function Page2({ onNext, onPrev }: Page2Props) {
                 </h2>
                 <p className="text-lg text-gray-700 leading-relaxed mb-3">
                   Sau{" "}
-                  <span className="highlight-yellow font-semibold">
+                  <span className="font-bold text-yellow-600">
                     Hiệp định Genève (1954)
                   </span>
                   , đất nước tạm thời bị chia cắt làm hai miền theo vĩ tuyến 17.
@@ -81,7 +81,7 @@ export function Page2({ onNext, onPrev }: Page2Props) {
                   </h3>
                 </div>
                 <p className="text-lg text-gray-800 leading-relaxed">
-                  <span className="highlight-red font-semibold">
+                  <span className="font-bold text-red-600">
                     Tiến hành cách mạng xã hội chủ nghĩa
                   </span>
                   , xây dựng miền Bắc thành{" "}
@@ -100,7 +100,7 @@ export function Page2({ onNext, onPrev }: Page2Props) {
                   </h3>
                 </div>
                 <p className="text-lg text-gray-800 leading-relaxed">
-                  <span className="highlight-yellow font-semibold">
+                  <span className="font-bold text-yellow-600">
                     Giải phóng miền Nam
                   </span>
                   , thống nhất đất nước, hoàn thành{" "}
@@ -129,7 +129,7 @@ export function Page2({ onNext, onPrev }: Page2Props) {
                   <li className="flex items-start gap-2">
                     <span className="text-red-600 font-bold mt-1">•</span>
                     <span>
-                      <span className="highlight-red font-semibold">
+                      <span className="font-bold text-red-600">
                         Trung tâm cách mạng xã hội chủ nghĩa
                       </span>
                     </span>
@@ -155,7 +155,7 @@ export function Page2({ onNext, onPrev }: Page2Props) {
                   <li className="flex items-start gap-2">
                     <span className="text-blue-600 font-bold mt-1">•</span>
                     <span>
-                      <span className="highlight-yellow font-semibold">
+                      <span className="font-bold text-yellow-600">
                         Tiền tuyến cách mạng dân tộc dân chủ nhân dân
                       </span>
                     </span>

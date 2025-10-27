@@ -114,9 +114,7 @@ export function Page4({ onNext, onPrev }: Page4Props) {
                     <p className="text-gray-700 mb-2">{event.description}</p>
                     <div className="flex items-center gap-2 text-blue-600 text-sm font-medium">
                       <Calendar size={16} />
-                      <span>
-                        Nhấn để xem thuyết trình chi tiết (200-300 từ)
-                      </span>
+                      <span>Nhấn để xem thuyết trình chi tiết</span>
                     </div>
                   </div>
                 </div>
@@ -139,7 +137,7 @@ export function Page4({ onNext, onPrev }: Page4Props) {
                 {/* <h3 className="font-bold text-red-700">CQ6.1</h3> */}
               </div>
               <p className="text-gray-700 text-center">
-                <span className="highlight-red font-semibold">
+                <span className="font-bold text-red-600">
                   Đường lối đúng đắn
                 </span>{" "}
                 từ Đại hội III xác định hai nhiệm vụ chiến lược
@@ -154,7 +152,7 @@ export function Page4({ onNext, onPrev }: Page4Props) {
                 {/* <h3 className="font-bold text-yellow-700">CQ6.3</h3> */}
               </div>
               <p className="text-gray-700 text-center">
-                <span className="highlight-yellow font-semibold">
+                <span className="font-bold text-yellow-600">
                   Vận dụng sáng tạo
                 </span>{" "}
                 trong thực tiễn, hai miền phối hợp chặt chẽ
@@ -169,7 +167,10 @@ export function Page4({ onNext, onPrev }: Page4Props) {
                 {/* <h3 className="font-bold text-blue-700">CQ6.5</h3> */}
               </div>
               <p className="text-gray-700 text-center">
-                Dẫn đến <span className="font-semibold">thắng lợi vĩ đại</span>{" "}
+                Dẫn đến{" "}
+                <span className="font-bold text-blue-600">
+                  thắng lợi vĩ đại
+                </span>{" "}
                 năm 1975, thống nhất đất nước
               </p>
             </div>

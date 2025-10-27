@@ -62,7 +62,7 @@ export function Page5({ onNext, onPrev }: Page5Props) {
                   <p className="text-lg text-gray-700 leading-relaxed mb-3">
                     Đường lối được Đại hội III của Đảng đề ra đã khẳng định vai
                     trò quyết định của
-                    <span className="highlight-yellow font-semibold">
+                    <span className="font-bold text-yellow-600">
                       {" "}
                       yếu tố con người và ý chí thống nhất đất nước
                     </span>
@@ -71,7 +71,7 @@ export function Page5({ onNext, onPrev }: Page5Props) {
                   <p className="text-lg text-gray-700 leading-relaxed">
                     Đường lối này xác định đúng đắn nhiệm vụ của mỗi miền, tạo
                     nên sự phối hợp nhịp nhàng giữa{" "}
-                    <span className="highlight-red font-semibold">
+                    <span className="font-bold text-red-600">
                       hậu phương và tiền tuyến
                     </span>
                     , giữa xây dựng CNXH ở miền Bắc và đấu tranh giải phóng miền
@@ -94,7 +94,7 @@ export function Page5({ onNext, onPrev }: Page5Props) {
                   <p className="text-lg text-gray-700 leading-relaxed mb-3">
                     Mặc dù tạm thời bị chia cắt về mặt lãnh thổ, nhưng hai miền
                     Nam - Bắc luôn
-                    <span className="highlight-yellow font-semibold">
+                    <span className="font-bold text-yellow-600">
                       {" "}
                       gắn bó máu thịt
                     </span>
@@ -123,7 +123,7 @@ export function Page5({ onNext, onPrev }: Page5Props) {
                   </h2>
                   <p className="text-lg text-gray-700 leading-relaxed mb-3">
                     Chiến thắng năm 1975 đã hoàn thành sự nghiệp
-                    <span className="highlight-red font-semibold">
+                    <span className="font-bold text-red-600">
                       {" "}
                       giải phóng dân tộc, thống nhất đất nước
                     </span>
@@ -131,7 +131,7 @@ export function Page5({ onNext, onPrev }: Page5Props) {
                   </p>
                   <p className="text-lg text-gray-700 leading-relaxed mb-3">
                     Đất nước bước vào{" "}
-                    <span className="highlight-yellow font-semibold">
+                    <span className="font-bold text-yellow-600">
                       kỷ nguyên mới
                     </span>
                     , kỷ nguyên độc lập dân tộc và chủ nghĩa xã hội.
@@ -155,11 +155,11 @@ export function Page5({ onNext, onPrev }: Page5Props) {
                     Bài học lịch sử quý báu
                   </h2>
                   <p className="text-lg text-gray-700 leading-relaxed mb-3">
-                    <span className="highlight-yellow font-semibold">
+                    <span className="font-bold text-yellow-600">
                       Đường lối đúng đắn
                     </span>
                     ,
-                    <span className="highlight-red font-semibold">
+                    <span className="font-bold text-red-600">
                       {" "}
                       sự đoàn kết thống nhất của toàn dân tộc
                     </span>

@@ -131,8 +131,7 @@ export function Page7({ onPrev }: Page7Props) {
                         ✓
                       </span>
                       <span className="text-blue-100 text-lg">
-                        Sách giáo khoa Lịch sử 12 (Chương trình Giáo dục phổ
-                        thông)
+                        Sách giáo khoa Lịch sử (Chương trình Giáo dục phổ thông)
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
@@ -148,7 +147,7 @@ export function Page7({ onPrev }: Page7Props) {
                         ✓
                       </span>
                       <span className="text-blue-100 text-lg">
-                        Sự hướng dẫn và góp ý của giáo viên
+                        Sự hướng dẫn và gợi ý của giáo viên
                       </span>
                     </li>
                   </ul>

@@ -1,7 +1,13 @@
-import { CheckCircle2, XCircle, Award, ClipboardList } from "lucide-react";
+import {
+  CheckCircle2,
+  XCircle,
+  Award,
+  ClipboardList,
+  Trophy,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import { database } from "../firebase/config";
-import { ref, push, get } from "firebase/database";
+import { ref, push, onValue } from "firebase/database";
 
 interface Page6Props {
   onNext: () => void;
@@ -41,29 +47,23 @@ export function Page6({ onNext, onPrev }: Page6Props) {
   const [showResults, setShowResults] = useState(false);
   const [quizResults, setQuizResults] = useState<QuizResult[]>([]);
 
-  // Prevent copy/paste/right-click
-  const preventCopyPaste = (e: React.ClipboardEvent | React.MouseEvent) => {
-    e.preventDefault();
-    return false;
-  };
-
+  // 🔄 Lấy dữ liệu realtime từ Firebase
   useEffect(() => {
-    // Load quiz results when component mounts
-    const loadResults = async () => {
-      try {
-        const quizRef = ref(database, "quizResults");
-        const snapshot = await get(quizRef);
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          // Convert object to array and sort by score
-          const resultsArray = Object.values(data);
-          setQuizResults(resultsArray as QuizResult[]);
-        }
-      } catch (error) {
-        console.error("Error loading results:", error);
+    const quizRef = ref(database, "quizResults");
+    const unsubscribe = onValue(quizRef, (snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        const resultsArray = Object.values(data) as QuizResult[];
+        // Sắp xếp theo điểm giảm dần, nếu bằng điểm thì theo thời gian sớm hơn
+        const sortedResults = resultsArray.sort(
+          (a, b) => b.score - a.score || a.timeSpent.localeCompare(b.timeSpent)
+        );
+        setQuizResults(sortedResults);
+      } else {
+        setQuizResults([]);
       }
-    };
-    loadResults();
+    });
+    return () => unsubscribe();
   }, []);
 
   const questions: Question[] = [
@@ -155,10 +155,7 @@ export function Page6({ onNext, onPrev }: Page6Props) {
       newAnswers[questionIndex] = answerIndex;
       setAnswers(newAnswers);
 
-      // Start timer on first answer
-      if (startTime === null) {
-        setStartTime(new Date());
-      }
+      if (startTime === null) setStartTime(new Date());
     }
   };
 
@@ -177,20 +174,17 @@ export function Page6({ onNext, onPrev }: Page6Props) {
 
     let correctCount = 0;
     answers.forEach((answer, index) => {
-      if (answer === questions[index].correctAnswer) {
-        correctCount++;
-      }
+      if (answer === questions[index].correctAnswer) correctCount++;
     });
 
-    // Calculate time spent
     const endTime = new Date();
     const timeSpent = startTime
       ? Math.floor((endTime.getTime() - startTime.getTime()) / 1000)
       : 0;
 
-    const minutes = Math.floor(timeSpent / 60);
-    const seconds = timeSpent % 60;
-    const timeString = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+    const timeString = `${Math.floor(timeSpent / 60)}:${(timeSpent % 60)
+      .toString()
+      .padStart(2, "0")}`;
 
     const result: QuizResult = {
       id: Date.now(),
@@ -201,7 +195,6 @@ export function Page6({ onNext, onPrev }: Page6Props) {
     };
 
     await saveResult(result);
-    setQuizResults([...quizResults, result]);
     setScore(correctCount);
     setSubmitted(true);
   };
@@ -215,13 +208,13 @@ export function Page6({ onNext, onPrev }: Page6Props) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 py-12 px-4">
       <div className="max-w-4xl mx-auto">
+        {/* Header */}
         <div className="text-center mb-12 animate-fade-in">
           <div className="flex justify-center mb-6">
             <div className="bg-gradient-to-br from-green-600 to-blue-600 p-6 rounded-full shadow-2xl">
               <Award size={64} className="text-white" />
             </div>
           </div>
-
           <h1 className="text-4xl md:text-5xl font-bold text-[#0a3d62] mb-4">
             Quiz ôn tập
           </h1>
@@ -230,57 +223,70 @@ export function Page6({ onNext, onPrev }: Page6Props) {
           </p>
 
           {!submitted && (
-            <div className="max-w-md mx-auto">
-              <input
-                type="text"
-                value={studentName}
-                onChange={(e) => setStudentName(e.target.value)}
-                placeholder="Nhập tên của bạn"
-                className="w-full px-4 py-2 border-2 border-blue-300 rounded-lg focus:border-blue-500 focus:outline-none"
-                required
-              />
-            </div>
+            <input
+              type="text"
+              value={studentName}
+              onChange={(e) => setStudentName(e.target.value)}
+              placeholder="Nhập tên của bạn"
+              className="w-full max-w-md px-4 py-2 border-2 border-blue-300 rounded-lg focus:border-blue-500 focus:outline-none"
+              required
+            />
           )}
         </div>
 
-        {/* Results Modal */}
+        {/* 🌟 Realtime Results Modal */}
         {showResults && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-xl p-6 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto">
-              <h2 className="text-2xl font-bold mb-4">Danh sách kết quả</h2>
-              <div className="space-y-4">
-                {quizResults
-                  .sort((a, b) => b.score - a.score)
-                  .map((result) => (
-                    <div
-                      key={result.id}
-                      className="bg-gray-50 p-4 rounded-lg border border-gray-200"
-                    >
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <h3 className="font-semibold">{result.name}</h3>
-                          <p className="text-sm text-gray-600">
-                            Thời gian làm: {result.timeSpent} | Ngày:{" "}
-                            {result.date}
-                          </p>
-                        </div>
-                        <div className="text-xl font-bold text-blue-600">
-                          {result.score}/10
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-              </div>
+          <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+            <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-3xl mx-4 animate-fade-in relative">
+              <h2 className="text-3xl font-bold text-center text-[#0a3d62] mb-6 flex items-center justify-center gap-2">
+                <Trophy className="text-yellow-500" /> Bảng xếp hạng
+              </h2>
+
+              {quizResults.length === 0 ? (
+                <p className="text-center text-gray-600">Chưa có ai làm bài!</p>
+              ) : (
+                <div className="overflow-y-auto max-h-[60vh]">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="bg-blue-100 text-[#0a3d62]">
+                        <th className="py-3 px-4 rounded-tl-xl">#</th>
+                        <th className="py-3 px-4">Họ tên</th>
+                        <th className="py-3 px-4">Điểm</th>
+                        <th className="py-3 px-4">Thời gian</th>
+                        <th className="py-3 px-4 rounded-tr-xl">Ngày làm</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {quizResults.map((r, index) => (
+                        <tr
+                          key={r.id}
+                          className={`border-b hover:bg-blue-50 transition ${
+                            index < 3 ? "font-semibold text-blue-700" : ""
+                          }`}
+                        >
+                          <td className="py-3 px-4">{index + 1}</td>
+                          <td className="py-3 px-4">{r.name}</td>
+                          <td className="py-3 px-4">{r.score}/10</td>
+                          <td className="py-3 px-4">{r.timeSpent}</td>
+                          <td className="py-3 px-4">{r.date}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
               <button
                 onClick={() => setShowResults(false)}
-                className="mt-4 px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors"
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-lg font-bold"
               >
-                Đóng
+                ✕
               </button>
             </div>
           </div>
         )}
 
+        {/* Kết quả cá nhân */}
         {submitted && (
           <div
             className={`mb-8 rounded-2xl p-8 shadow-2xl text-center animate-slide-up ${
@@ -311,6 +317,7 @@ export function Page6({ onNext, onPrev }: Page6Props) {
           </div>
         )}
 
+        {/* Câu hỏi */}
         <div className="space-y-6 animate-slide-up">
           {questions.map((q, qIndex) => (
             <div
@@ -321,13 +328,7 @@ export function Page6({ onNext, onPrev }: Page6Props) {
                 <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
                   {qIndex + 1}
                 </div>
-                <h3
-                  className="text-lg font-semibold text-gray-800 flex-1 select-none"
-                  onCopy={preventCopyPaste}
-                  onCut={preventCopyPaste}
-                  onPaste={preventCopyPaste}
-                  onContextMenu={preventCopyPaste}
-                >
+                <h3 className="text-lg font-semibold text-gray-800 flex-1 select-none">
                   {q.question}
                 </h3>
               </div>
@@ -336,19 +337,14 @@ export function Page6({ onNext, onPrev }: Page6Props) {
                 {q.options.map((option, oIndex) => {
                   const isSelected = answers[qIndex] === oIndex;
                   const isCorrect = oIndex === q.correctAnswer;
-                  const showResult = submitted;
 
                   let buttonClass =
                     "bg-gray-50 hover:bg-blue-50 border-gray-300";
-
-                  if (showResult) {
-                    if (isCorrect) {
+                  if (submitted) {
+                    if (isCorrect)
                       buttonClass = "bg-green-100 border-green-500";
-                    } else if (isSelected && !isCorrect) {
+                    else if (isSelected && !isCorrect)
                       buttonClass = "bg-red-100 border-red-500";
-                    } else {
-                      buttonClass = "bg-gray-50 border-gray-300";
-                    }
                   } else if (isSelected) {
                     buttonClass = "bg-blue-100 border-blue-500";
                   }
@@ -358,34 +354,14 @@ export function Page6({ onNext, onPrev }: Page6Props) {
                       key={oIndex}
                       onClick={() => handleAnswer(qIndex, oIndex)}
                       disabled={submitted}
-                      className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 ${buttonClass} ${
-                        !submitted ? "hover:shadow-md" : ""
-                      } flex items-center justify-between select-none`}
-                      onCopy={preventCopyPaste}
-                      onCut={preventCopyPaste}
-                      onPaste={preventCopyPaste}
-                      onContextMenu={preventCopyPaste}
+                      className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 ${buttonClass}`}
                     >
-                      <span
-                        className="text-gray-800"
-                        onCopy={preventCopyPaste}
-                        onCut={preventCopyPaste}
-                        onPaste={preventCopyPaste}
-                        onContextMenu={preventCopyPaste}
-                      >
-                        {option}
-                      </span>
-                      {showResult && isCorrect && (
-                        <CheckCircle2
-                          className="text-green-600 flex-shrink-0"
-                          size={24}
-                        />
+                      <span>{option}</span>
+                      {submitted && isCorrect && (
+                        <CheckCircle2 className="text-green-600 float-right" />
                       )}
-                      {showResult && isSelected && !isCorrect && (
-                        <XCircle
-                          className="text-red-600 flex-shrink-0"
-                          size={24}
-                        />
+                      {submitted && isSelected && !isCorrect && (
+                        <XCircle className="text-red-600 float-right" />
                       )}
                     </button>
                   );
@@ -395,13 +371,14 @@ export function Page6({ onNext, onPrev }: Page6Props) {
           ))}
         </div>
 
+        {/* Nút Nộp bài */}
         {!submitted && (
           <div className="mt-8 text-center">
             <button
               onClick={handleSubmit}
-              disabled={answers.includes(-1)}
+              disabled={answers.includes(-1) || !studentName.trim()}
               className={`px-8 py-4 rounded-lg text-xl font-semibold transition-all duration-300 ${
-                answers.includes(-1)
+                answers.includes(-1) || !studentName.trim()
                   ? "bg-gray-400 text-gray-600 cursor-not-allowed"
                   : "bg-gradient-to-r from-green-600 to-green-700 text-white hover:shadow-lg hover:scale-105"
               }`}
@@ -411,6 +388,7 @@ export function Page6({ onNext, onPrev }: Page6Props) {
           </div>
         )}
 
+        {/* Nút hành động */}
         <div className="flex justify-between mt-12">
           <button
             onClick={onPrev}
