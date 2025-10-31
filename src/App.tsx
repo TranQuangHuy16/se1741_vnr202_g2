@@ -41,7 +41,7 @@ function App() {
     />,
     <Page8
       key="page7"
-      onNext={() => setCurrentPage(6)}
+      onNext={() => setCurrentPage(7)}
       onPrev={() => setCurrentPage(5)}
     />,
     <Page7 key="page8" onPrev={() => setCurrentPage(6)} />,
