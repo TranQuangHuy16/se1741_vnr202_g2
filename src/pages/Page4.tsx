@@ -42,6 +42,13 @@ export function Page4({ onNext, onPrev }: Page4Props) {
         'Giai đoạn này Mỹ thực hiện chiến lược "Việt Nam hóa chiến tranh", rút dần quân Mỹ về nước nhưng tăng cường vũ khí và viện trợ cho chính quyền Sài Gòn. Quân và dân ta tiếp tục chiến đấu kiên cường, giành nhiều thắng lợi trên các mặt trận. Miền Bắc vẫn vững vàng chi viện cho miền Nam. Đường Trường Sơn ngày càng được mở rộng và hiện đại hóa, vận chuyển hàng vạn tấn vũ khí, lương thực vào chiến trường.',
     },
     {
+      year: "12/1972",
+      title: "Chiến dịch Linebacker II",
+      description: "Mỹ ném bom Hà Nội và Hải Phòng trong 12 ngày đêm",
+      detail:
+        'Trong bối cảnh Mỹ tiến hành ném bom miền Bắc Việt Nam, Tổng thống Nixon đã thăm Liên Xô và Trung Quốc. Cả hai nước này muốn giải quyết vấn đề Việt Nam vì lo ngại quan hệ Mỹ. Để gây áp lực lên Hà Nội và chứng tỏ trách nhiệm với Việt Nam Cộng hòa (VNCH) sau khi dự thảo Hiệp định Paris bị VNCH phản đối, Mỹ mở Chiến dịch Linebacker II (12/1972). Mỹ huy động gần 200 chiếc B-52 ném bom rải thảm ác liệt xuống Hà Nội và Hải Phòng trong 12 ngày, gây thương vong lớn cho dân thường (như tại Khâm Thiên). Tuy nhiên, chiến dịch bị thất bại về mặt chiến lược: lực lượng phòng không Việt Nam Dân chủ Cộng hòa bắn hạ hàng chục B-52 (được gọi là "Điện Biên Phủ trên không"), đồng thời bị dư luận quốc tế và trong nước phản đối mạnh mẽ. Cuối cùng, Mỹ buộc phải chấm dứt ném bom và quay lại ký kết Hiệp định Paris vào tháng 1/1973. Nội dung hiệp định về cơ bản không khác nhiều so với dự thảo ban đầu, chứng tỏ mục tiêu chiến lược của Linebacker II đã không đạt được.',
+    },
+    {
       year: "1973",
       title: "Hiệp định Paris",
       description: "Mỹ ký Hiệp định Paris, cam kết rút quân",
